@@ -1,5 +1,8 @@
 package render;
 
+import render2.point.MyPoint;
+import render3.shapes.MyPolygon;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -9,8 +12,8 @@ public class Display extends Canvas implements Runnable {
     private Thread thread;
     private JFrame frame;
     private static String title = "Projekt Grafika";
-    private static final int WIDTH = 800;
-    private static final int HEIGHT = 600;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 600;
     private static boolean running = false;
 
 
@@ -95,9 +98,11 @@ public class Display extends Canvas implements Runnable {
         g.setColor(Color.black);
         g.fillRect(0,0,WIDTH,HEIGHT);
 
-        g.setColor(Color.red);
-        g.fillRect(50,50,200,100);
-
+        MyPolygon poly = new MyPolygon(
+          new MyPoint(0,100,0),
+                new MyPoint(100,0,0),
+                new MyPoint(0,0,100));
+        poly.render(g);
         g.dispose();
         bs.show();
     }
